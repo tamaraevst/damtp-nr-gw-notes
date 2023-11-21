@@ -1,0 +1,37 @@
+#!/bin/bash
+#! Job name
+#SBATCH -J bbh
+#! Partition
+#SBATCH -p cosmosx
+#! What events to email for
+#SBATCH --mail-type=all
+#! How many whole nodes should be allocated?
+#SBATCH --nodes=1
+#! Number of cores per task (OpenMP threads)
+#SBATCH -c 2
+#! How many (MPI) tasks will there be in total? (<= nodes*32)
+#! The skylake/skylake-himem nodes have 32 CPUs (cores) each.
+#SBATCH --ntasks=32
+#! How much wallclock time will be required?
+#SBATCH --time=12:00:00
+
+# Load modules
+module purge
+module load gcc/7.5.0/gcc-7.5.0-4zdnknt # in default environment but load anyway in case of purge
+module load intel-oneapi-compilers/2022.0.2/gcc-7.5.0-3clffac intel-oneapi-mkl/2022.0.2/gcc-7.5.0-rnpbvnf
+module load hdf5/1.12.1/intel-oneapi-mpi-2021.5.1/gcc-7.5.0-34j4qx4
+module load petsc/3.16.5/intel-oneapi-mpi-2021.5.1/gcc-7.5.0-67nf5rm # for AHFinder
+module load gsl
+
+# Print information
+module list
+pwd
+date
+
+#export CH_TIMER=1
+export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
+EXEC="/nfs/st01/hpc-gr-epss/<crsid>/BinaryBH/Main_BinaryBH3d_ch.Linux.64.mpiicpc.ifort.OPTHIGH.MPI.OPENMPCC.ICPX2022.0.ex" # Change this path accordingly 
+OPTIONS="params.txt"
+
+# Launch codes
+mpiexec $EXEC $OPTIONS
