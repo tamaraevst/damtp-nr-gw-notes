@@ -3,9 +3,8 @@
 1. Please request Fawcett account [here](https://www.maths.cam.ac.uk/computing/faculty-hpc-system-fawcett).
 2. Please configure your ssh access appropriately, by using instructions [here](https://www.maths.cam.ac.uk/computing/fawcett-ssh-access).
 3. Make sure you can login to Fawcett with no issues. 
-4. Download all the data files in the `download` directory of this repository into your home directory on Fawcett. 
-5. Please have some sort of plotting tool on hand, I personally use `gnuplot` for quick plotting, which can be easily installed using `homebrew`.
-6. Please download Visit 2.13 on your laptop (executables can be found [here](https://sd.llnl.gov/simulation/computer-codes/visit/executables) 
+4. Please have some sort of plotting tool on hand, I personally use `gnuplot` for quick plotting, which can be easily installed using `homebrew`.
+5. Please download Visit 2.13 on your laptop (executables can be found [here](https://sd.llnl.gov/simulation/computer-codes/visit/executables)). 
 
 # GRChombo
 GRChombo is an open-source code for numerical relativity simulations. It is written entirely in C++14, using hybrid MPI/OpenMP parallelism and
@@ -24,7 +23,7 @@ Please also consider joining the Slack channel, where you can ask questions abou
 
 ## Where do I find the code?
 
-All of the public codes can be found by visiting the page of the GRTLCollaboration: https://github.com/GRTLCollaboration
+All of the public codes can be found by visiting the page of the GRTLCollaboration: https://github.com/GRTLCollaboration. 
 
 Over the last few years, GRChombo's capabilities have been immensely expanded and the following public versions/extensions are now available:
 
@@ -71,9 +70,9 @@ Now we can start building the Chombo libraries
 Before we can build the Chombo libraries, we need to first set the configuration
 variables that the build system uses. These are set in the file
 `Chombo/lib/mk/Make.defs.local`. This will differ for each system you build on,
-but we try to add this file for clusters we have used \[GR\]Chombo on before in `GRChombo/InstallNotes/MakeDefsLocalExamples`
+but we try to add this file for clusters we have used GRChombo on before in `GRChombo/InstallNotes/MakeDefsLocalExamples`
 
-There is a ready-to-use Fawcett.Make.defs.local file in the `download` folder of this repository for use on the `cosmosx` and `skylake`
+There is a ready-to-use Fawcett.Make.defs.local file in the `download` folder of this repository for use on the `cosmosx` and `knl`
 partitions on Fawcett. You should now copy this to the right place in your Chombo
 directory using the command: 
 ```bash
@@ -191,6 +190,35 @@ You should also check the main job output in the `slurm-<jobid>.out` file
 to check that it hasn't crashed.
 
 Congratulations, you have just run your first GRChombo simulation!
+
+### Visualisation in VisIt
+
+Here we will build VisIt on Fawcett from source. This is by far the most 'painful' scenario: imagine you want to visualise your results, but the cluster you are using does not have any visualisation module installed. How can you set it up yourself?
+
+In this demonstration, we will be using ```2.13`` version of VisIt that you hopefully have downloaded (on your personal laptop) using the instructions above. In order to build it on the cluster we need the following files from the the VisIt installation [website](https://sd.llnl.gov/simulation/computer-codes/visit/executables):
+
+1. VisIt install script
+2. Executable for the Linux - x86_64 64 bit Ubuntu 14.04, 3.13.0-91-generic #138-Ubuntu SMP, gcc 4.8 plaform.
+
+Please make sure that you scroll to the correct version of VisIt (identical to the one installed on your personal laptop to avoid any errors in visualisation) and download the correct executables!
+
+Now, once that is loaded, you should copy them over to Fawcett using ```scp``` command.
+
+Once that is done, go to your Fawcett directry, where you have copied the exexutable files to and run:
+
+```bash
+chmod 755 visit-install2_13_0
+``` 
+
+Now, you are ready for the build:
+
+```bash
+ ./visit-install2_13_0 2.13.0 linux-x86_64-ubuntu14 ~/visit
+```
+
+Here ```~/visit``` specifies the path where VisIt will be installed. You will be asked whether you want to choose a system configurations file, choose 1) No system configuration and press Enter. The build of the tool will begin.
+
+
 
 ### Visualisation in Paraview
 
