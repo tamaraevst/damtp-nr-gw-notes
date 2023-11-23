@@ -5,6 +5,7 @@
 3. Make sure you can login to Fawcett with no issues. 
 4. Download all the data files in the `download` directory of this repository into your home directory on Fawcett. 
 5. Please have some sort of plotting tool on hand, I personally use `gnuplot` for quick plotting, which can be easily installed using `homebrew`.
+6. Please download Visit 2.13 on your laptop (executables can be found [here](https://sd.llnl.gov/simulation/computer-codes/visit/executables) 
 
 # GRChombo
 GRChombo is an open-source code for numerical relativity simulations. It is written entirely in C++14, using hybrid MPI/OpenMP parallelism and
