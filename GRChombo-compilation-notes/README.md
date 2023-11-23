@@ -1,4 +1,4 @@
-<img width="672" alt="vis" src="https://github.com/tamaraevst/damtp-nr-gw-notes/assets/86721223/2ba216a9-dfc1-4ad0-90d2-f640361c302c"># Pre-workshop instructions
+# Pre-workshop instructions
 
 1. Please request Fawcett account [here](https://www.maths.cam.ac.uk/computing/faculty-hpc-system-fawcett).
 2. Please configure your ssh access appropriately, by using instructions [here](https://www.maths.cam.ac.uk/computing/fawcett-ssh-access).
@@ -218,7 +218,9 @@ Now, you are ready for the build:
 
 Here ```~/visit``` specifies the path where VisIt will be installed. You will be asked whether you want to choose a system configurations file, choose ```1) No system configuration``` and press ```Enter```. The build of the tool will begin.
 
-You are ready to visualise (assuming you have some plot files from the GRChombo output)! On your personal laptop open your VisIt app. In order to connect to Fawcett remotely, we need to set up the host details for it correctly. By connecting to a host, we will be running all visualisation in VisIt locally, however we will tunnel into Fawcett via ```ssh``` and access all the data files in our run directory (e.g. ```/nfs/st01/hpc-gr-epss/${USER}/BinaryBH/j```). This route is often desirable, as you may be having lots of data files to visualise. If you try loading them back onto your personal laptop, this would usually lead to immense memory requirements. To set up a new host for Fawcett, go to ```Options -> Host profiles``` and insert the information provided in the example of ```visit/host.png```. When following this example, you should change your CRSID appropriately. 
+You are ready to visualise (assuming you have some plot files from the GRChombo output)! On your personal laptop open your VisIt app. In order to connect to Fawcett remotely, we need to set up the host details for it correctly. By connecting to a host, we will be running all visualisation in VisIt locally, however we will tunnel into Fawcett via ```ssh``` and access all the data files in our run directory (e.g. ```/nfs/st01/hpc-gr-epss/${USER}/BinaryBH/j```). This route is often desirable, as you may be having lots of data files to visualise. If you try loading them back onto your personal laptop, this would usually lead to immense memory requirements. To set up a new host for Fawcett, go to ```Options -> Host profiles``` and insert the information provided as below (when following this example, you should change your CRSID appropriately): 
+
+<img width="663" alt="vis" src="https://github.com/tamaraevst/damtp-nr-gw-notes/assets/86721223/d51583b2-876e-4396-9d7b-d7eba1551b90">
 
 Once that is done, ```Export``` your host. Next, to access your data, click ```Open``` and choose from the drop-down menu the name of the host for Fawcett that you have just created (e.g. ```faw``` if naming it the same way as in the screenshot above). This should now hopefully connect you to Fawcett and you can navigate to your data folder and load your plot files. 
 
