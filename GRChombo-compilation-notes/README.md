@@ -1,4 +1,4 @@
-# Pre-workshop instructions
+<img width="672" alt="vis" src="https://github.com/tamaraevst/damtp-nr-gw-notes/assets/86721223/2ba216a9-dfc1-4ad0-90d2-f640361c302c"># Pre-workshop instructions
 
 1. Please request Fawcett account [here](https://www.maths.cam.ac.uk/computing/faculty-hpc-system-fawcett).
 2. Please configure your ssh access appropriately, by using instructions [here](https://www.maths.cam.ac.uk/computing/fawcett-ssh-access).
@@ -197,8 +197,8 @@ Here we will build VisIt on Fawcett from source. This is by far the most 'painfu
 
 In this demonstration, we will be using ```2.13`` version of VisIt that you hopefully have downloaded (on your personal laptop) using the instructions above. In order to build it on the cluster we need the following files from the the VisIt installation [website](https://sd.llnl.gov/simulation/computer-codes/visit/executables):
 
-1. VisIt install script
-2. Executable for the Linux - x86_64 64 bit Ubuntu 14.04, 3.13.0-91-generic #138-Ubuntu SMP, gcc 4.8 plaform.
+1. VisIt install script.
+2. Executable for the Linux - x86_64 64 bit Ubuntu 14.04, 3.13.0-91-generic #138-Ubuntu SMP, gcc 4.8 platform.
 
 Please make sure that you scroll to the correct version of VisIt (identical to the one installed on your personal laptop to avoid any errors in visualisation) and download the correct executables!
 
@@ -216,9 +216,13 @@ Now, you are ready for the build:
  ./visit-install2_13_0 2.13.0 linux-x86_64-ubuntu14 ~/visit
 ```
 
-Here ```~/visit``` specifies the path where VisIt will be installed. You will be asked whether you want to choose a system configurations file, choose 1) No system configuration and press Enter. The build of the tool will begin.
+Here ```~/visit``` specifies the path where VisIt will be installed. You will be asked whether you want to choose a system configurations file, choose ```1) No system configuration``` and press ```Enter```. The build of the tool will begin.
 
+You are ready to visualise (assuming you have some plot files from the GRChombo output)! On your personal laptop open your VisIt app. In order to connect to Fawcett remotely, we need to set up the host details for it correctly. By connecting to a host, we will be running all visualisation in VisIt locally, however we will tunnel into Fawcett via ```ssh``` and access all the data files in our run directory (e.g. ```/nfs/st01/hpc-gr-epss/${USER}/BinaryBH/j```). This route is often desirable, as you may be having lots of data files to visualise. If you try loading them back onto your personal laptop, this would usually lead to immense memory requirements. To set up a new host for Fawcett, go to ```Options -> Host profiles``` and insert the information provided in the example of ```visit/host.png```. When following this example, you should change your CRSID appropriately. 
 
+Once that is done, ```Export``` your host. Next, to access your data, click ```Open``` and choose from the drop-down menu the name of the host for Fawcett that you have just created (e.g. ```faw``` if naming it the same way as in the screenshot above). This should now hopefully connect you to Fawcett and you can navigate to your data folder and load your plot files. 
+
+You can find VisIt documentation on [here](https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/). 
 
 ### Visualisation in Paraview
 
