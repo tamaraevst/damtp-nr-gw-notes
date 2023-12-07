@@ -17,7 +17,8 @@ Below is a (not exhaustive) list of relevant literature you should read at some 
 
 1. Lessons for adaptive mesh refinement in numerical relativity: https://arxiv.org/abs/2112.10567
 2. GRChombo : Numerical Relativity with Adaptive Mesh Refinement: https://arxiv.org/abs/1503.03436
-3. Katy's thesis with lots of insights into numerical relativity and GRChombo: https://arxiv.org/abs/1704.06811
+3. Scalar Fields in Numerical General Relativity: https://arxiv.org/abs/1704.06811 (Katy's thesis with lots of insights into numerical relativity and GRChombo)
+4. Numerical modelling of gravitational wave sources in general relativity: https://www.repository.cam.ac.uk/items/ee017be7-778b-49f8-9c67-6bfc1456029b (Miren's thesis with lots of insights into Chombo/GRChombo's workings) 
 
 Please also consider joining the Slack channel, where you can ask questions about the code and hear about the latest updates in the community. 
 
@@ -32,7 +33,7 @@ Over the last few years, GRChombo's capabilities have been immensely expanded an
 3. [GRFolres](https://github.com/GRTLCollaboration/GRFolres) -- for evolving balck hole spacetimes in modified theories of gravity, including the four-derivative scalar-tensor theory of gravity and Cubic Horndeski theory of gravity.
 4. [TwoPunctures](https://github.com/GRTLCollaboration/TwoPunctures) -- Bowen-York initial data for two puncture black holes using a single domain spectral method, to be used along with GRChombo source code.
 
-In this workshop, we will focus on compiling and runnig the original version of GRChombo, i.e. the first item in the above list. 
+In this workshop, we will focus on compiling and running the original version of GRChombo, i.e. the first item in the above list. 
 
 ## Fawcett Tutorial
 
@@ -56,10 +57,8 @@ command such as
 ```bash
 git clone https://github.com/GRTLCollaboration/Chombo.git ~/Chombo
 ```
-e.g. to clone into your home directory (which we will assume below).
 
-Next, clone the GRChombo repository using a command
-such as
+Next, clone the GRChombo repository using 
 ```bash
 git clone https://github.com/GRTLCollaboration/GRChombo.git ~/GRChombo
 ```
@@ -143,28 +142,28 @@ for our simulation
 ```bash
 mkdir -p /nfs/st01/hpc-gr-epss/${USER}/BinaryBH
 ```
-and let's copy our binary across to the parent of this new directory using 
+and let's copy our binary across to this new directory using 
 a command such as
 ```bash
 cp ~/GRChombo/Examples/BinaryBH/Main_BinaryBH3d_ch.Linux.64.mpiicpc.ifort.OPTHIGH.MPI.OPENMPCC.ICPX2022.0.ex \
 /nfs/st01/hpc-gr-epss/${USER}/BinaryBH/
 ```
-We will use Miren's parameter file from previous trainig sessions. It contains initial data
-for the quasicircular inspiral of an equal-mass BH binary which should do
+We will use an dapted version of the parameter for a binary black hole merger from previous trainig sessions. It contains initial data
+for the quasicircular inspiral of an equal-mass BH binary which should do 
 about 10 orbits (though due to low resolution and approximate initial data,
-it will probably be a fair number fewer - it would also take around 2 days to
+it will probably be a fair number fewer - it would also take around a while to
 finish). Let's copy it across to our simulation
 directory that we created:
-```bash
+```bash 
 cp ~/fawcett-params.txt /nfs/st01/hpc-gr-epss/${USER}/BinaryBH/params.txt
 ```
 We will need to create a jobscript to submit to the scheduler.
-```bash
+```bash 
 cp ~/fawcett-jobscript /nfs/st01/hpc-gr-epss/${USER}/BinaryBH/jobscript
 ```
 You will need to edit a few lines in this template before you can submit it.
 Use your favourite available text editor to provide the full path to the
-executable i.e. edit the line 
+executable, i.e. edit the line 
 ```bash
 EXEC="/nfs/st01/hpc-gr-epss/<crsid>/BinaryBH/Main_BinaryBH3d_ch.Linux.64.mpiicpc.ifort.OPTHIGH.MPI.OPENMPCC.ICPX2022.0.ex"
 ```
@@ -200,11 +199,11 @@ In this demonstration, we will be using ```2.13`` version of VisIt that you hope
 1. VisIt install script.
 2. Executable for the Linux - x86_64 64 bit Ubuntu 14.04, 3.13.0-91-generic #138-Ubuntu SMP, gcc 4.8 platform.
 
-Please make sure that you scroll to the correct version of VisIt (identical to the one installed on your personal laptop to avoid any errors in visualisation) and download the correct executables!
+Please make sure that you scroll to the correct version of VisIt (it has to be the same as the one installed on your personal laptop to avoid any errors in connecting to VisIt remotely) and download the correct executables!
 
 Now, once that is loaded, you should copy them over to Fawcett using ```scp``` command.
 
-Once that is done, go to your Fawcett directry, where you have copied the exexutable files to and run:
+Once that is done, go to your Fawcett directory, where you have copied the exexutable files to and run: 
 
 ```bash
 chmod 755 visit-install2_13_0
@@ -218,7 +217,7 @@ Now, you are ready for the build:
 
 Here ```~/visit``` specifies the path where VisIt will be installed. You will be asked whether you want to choose a system configurations file, choose ```1) No system configuration``` and press ```Enter```. The build of the tool will begin.
 
-You are ready to visualise (assuming you have some plot files from the GRChombo output)! On your personal laptop open your VisIt app. In order to connect to Fawcett remotely, we need to set up the host details for it correctly. By connecting to a host, we will be running all visualisation in VisIt locally, however we will tunnel into Fawcett via ```ssh``` and access all the data files in our run directory (e.g. ```/nfs/st01/hpc-gr-epss/${USER}/BinaryBH/j```). This route is often desirable, as you may be having lots of data files to visualise. If you try loading them back onto your personal laptop, this would usually lead to immense memory requirements. To set up a new host for Fawcett, go to ```Options -> Host profiles``` and insert the information provided as below (when following this example, you should change your CRSID appropriately): 
+You are ready to visualise (assuming you have some plot files from the GRChombo output)! On your personal laptop open your VisIt app. In order to connect to Fawcett remotely, we need to set up the host details for it correctly. By connecting to a host, we will be running all visualisation in VisIt locally, however we will tunnel into Fawcett via ```ssh``` and access all the data files in our run directory (e.g. ```/nfs/st01/hpc-gr-epss/${USER}/BinaryBH/```). This route is often desirable, as you may be having lots of data files to visualise. If you try loading them back onto your personal laptop, this would usually lead to immense memory requirements. To set up a new host for Fawcett, go to ```Options -> Host profiles``` and insert the information provided as below (when following this example, you should change your CRSID appropriately): 
 
 <img width="663" alt="vis" src="https://github.com/tamaraevst/damtp-nr-gw-notes/assets/86721223/d51583b2-876e-4396-9d7b-d7eba1551b90">
 
