@@ -8,7 +8,10 @@ SN Core collapse in (massless) scalar-tensor gravity.
 
 **MST_FRW.pdf:**
 
-Wave propagation in massive scalar-tensor gravity in cosmological
-spacetimes.
+Wave propagation in massive scalar-tensor gravity in cosmological 
+spacetimes. 
+
+**massive.pdf:**
+SN Core collapse in massive scalar-tensor gravity. 
 
 
