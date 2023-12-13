@@ -12,7 +12,7 @@ verbosity = 0
 # output_path = "" # Main path for all files. Must exist!
 chk_prefix = BinaryBHChk_
 plot_prefix = BinaryBHPlot_
-restart_file = hdf5/BinaryBHChk_000300.3d.hdf5
+#restart_file = hdf5/BinaryBHChk_000300.3d.hdf5
 
 # HDF5files are written every dt = L/N*dt_multiplier*checkpoint_interval
 checkpoint_interval = 60
@@ -230,8 +230,8 @@ TP_initial_lapse_psi_exponent = -2.0
 # Apparent Horizon Finder parameters
 
 AH_activate = 1
-AH_num_ranks = 32
-AH_num_points_u = 32
+AH_num_ranks = 32 # you may need to adjust this parameter depending on what is the number of tasks you are using in your job submission file
+AH_num_points_u = 32 # you may need to adjust this parameter depending on what is the number of tasks you are using in your job submission file
 AH_num_points_v = 31
 # AH_solve_interval = 1
 # AH_print_interval = 1

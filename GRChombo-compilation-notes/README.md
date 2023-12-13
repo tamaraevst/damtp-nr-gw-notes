@@ -194,7 +194,7 @@ Congratulations, you have just run your first GRChombo simulation!
 
 Here we will build VisIt on Fawcett from source. This is by far the most 'painful' scenario: imagine you want to visualise your results, but the cluster you are using does not have any visualisation module installed. How can you set it up yourself?
 
-In this demonstration, we will be using ```2.13`` version of VisIt that you hopefully have downloaded (on your personal laptop) using the instructions above. In order to build it on the cluster we need the following files from the the VisIt installation [website](https://sd.llnl.gov/simulation/computer-codes/visit/executables):
+In this demonstration, we will be using `2.13.0` version of VisIt that you hopefully have downloaded (on your personal laptop) using the instructions above. In order to build it on the cluster we need the following files from the the VisIt installation [website](https://sd.llnl.gov/simulation/computer-codes/visit/executables):
 
 1. VisIt install script.
 2. Executable for the Linux - x86_64 64 bit Ubuntu 14.04, 3.13.0-91-generic #138-Ubuntu SMP, gcc 4.8 platform.
